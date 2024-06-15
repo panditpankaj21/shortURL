@@ -13,7 +13,9 @@ const generateNewShortURL = async(req, res)=>{
         visitedHistory: [],
     })
 
-    return res.status(200).json({id: shortID});
+    return res.render("home", {
+        shortID: shortID    
+    });
 }
 
 const getAnalytics = async (req, res)=>{

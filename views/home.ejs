@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>URL Shortner</h1>
+    <% if (locals.shortID) { %>
+     <p>your newly generated link is : http://localhost:8000/website/<%= locals.shortID %></p>
+    <% } %>
+    <div>
+        <form action="/url" method="post">
+            <label for="">Enter the url</label>
+            <input 
+                type="text" 
+                name="url" 
+                placeholder="http://www.example.com"
+            />
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+    <div>
+        <% if (locals.urls) { %>
+         <table>
+            <thead>
+                <th>S.No.</th>
+                <th>shortID</th>
+                <th>Redirect</th>
+                <th>number of clicks</th>
+            </thead>
+            <tbody>
+                <% urls.forEach((url, index) => { %>
+                 <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= url.shortID %></td>
+                    <td><%= url.originalURL %></td>
+                    <td><%= url.visitedHistory.length %></td>
+                 </tr>
+                <% }) %>
+            </tbody>
+         </table>
+        <% } %>
+    </div>
+
+</body>
+</html>
