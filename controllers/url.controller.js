@@ -16,6 +16,16 @@ const generateNewShortURL = async(req, res)=>{
     return res.status(200).json({id: shortID});
 }
 
+const getAnalytics = async (req, res)=>{
+    const shortID = req.params.shortID;
+    const result = await URL.findOne({shortID});
+    return res.json({
+        totalClick : result.visitedHistory.length,
+        visitedHistory: result.visitedHistory,
+    })
+}
+
 module.exports = {
     generateNewShortURL,
+    getAnalytics,
 }
