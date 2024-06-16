@@ -11,6 +11,7 @@ const generateNewShortURL = async(req, res)=>{
         shortID: shortID,
         originalURL: url,
         visitedHistory: [],
+        createdBy: req.user._id,
     })
 
     return res.render("home", {

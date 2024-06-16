@@ -8,12 +8,12 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>homepage</title>
 </head>
 <body>
     <h1>URL Shortner</h1>
     <% if (locals.shortID) { %>
-     <p>your newly generated link is : http://localhost:8000/website/<%= locals.shortID %></p>
+     <p>your newly generated link is : http://localhost:8000/url/<%= locals.shortID %></p>
     <% } %>
     <div>
         <form action="/url" method="post">
